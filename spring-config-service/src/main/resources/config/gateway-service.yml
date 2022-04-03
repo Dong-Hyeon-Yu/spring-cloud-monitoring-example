@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+      routes:
+        - id: resource-service
+          uri: lb://RESOURCE-SERVICE
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  #  api-docs:
+  #    path: /docs
+  swagger-ui:
+    #    disable-swagger-default-url: true
+    #    path: /swagger
+    urls:
+      - name: resource
+        url: /v3/api-docs/resource
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

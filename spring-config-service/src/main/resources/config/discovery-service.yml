@@ -1,0 +1,11 @@
+server:
+  port: 8061
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false # 유레카 서버에 본인 서비스를 등록할 건지 여부
+    fetchRegistry: false # 유레카 서버로부터 서비스 목록을 로컬 캐시에 저장할 건지 여부
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

@@ -1,0 +1,16 @@
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+
+springdoc:
+  packagesToScan: demo.resource
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
