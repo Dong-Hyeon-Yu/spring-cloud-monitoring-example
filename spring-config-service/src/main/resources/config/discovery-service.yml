@@ -9,3 +9,18 @@ eureka:
     fetchRegistry: false # 유레카 서버로부터 서비스 목록을 로컬 캐시에 저장할 건지 여부
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+management:
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name} # metric 정보에 대한 라벨링 설정
+#    metadataMap:
+#      "prometheus.scrape": "true"
+#      "prometheus.path": "/actuator/prometheus"
+#      "prometheus.port": ${server.port}

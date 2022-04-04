@@ -9,3 +9,11 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8061/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name} # metric 정보에 대한 라벨링 설정

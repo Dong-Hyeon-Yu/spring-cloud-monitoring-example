@@ -37,6 +37,9 @@ subprojects {
 	dependencies {
 		annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 		developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+		implementation 'io.micrometer:micrometer-registry-prometheus'
+		implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	}
 
 	tasks.named('test') {
@@ -48,7 +51,6 @@ project(":resource-service") {
 	dependencies {
 		implementation 'org.springdoc:springdoc-openapi-ui:1.6.0'
 		implementation 'org.springframework.boot:spring-boot-starter-web'
-		implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 		implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
 		implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
@@ -71,7 +73,6 @@ project(':spring-discovery-service') {
 
 project (':spring-gateway-service') {
 	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-actuator'
 		implementation "org.springframework.cloud:spring-cloud-starter-gateway"
 		implementation 'org.springframework.cloud:spring-cloud-starter-config'
 		implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

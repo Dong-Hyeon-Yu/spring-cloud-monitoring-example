@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8082
 
 eureka:
   client:
@@ -11,6 +11,11 @@ springdoc:
 
 management:
   endpoints:
+    health:
+      show-details: always
     web:
       exposure:
         include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name} # metric 정보에 대한 라벨링 설정
