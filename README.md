@@ -1,4 +1,4 @@
-# :star: 모니터링과 JVM 튜닝을 곁들인 MSA 예시 :star:
+# :star: 모니터링과 JVM heap 튜닝을 곁들인 MSA 예시 :star:
 
 ▪️ Release Trains : `2021.0.1` (https://spring.io/projects/spring-cloud) <br></br>
 ▪️ Java : `openjdk-11`<br></br>
@@ -14,10 +14,14 @@
   - `springdoc-openapi-ui:1.6.0`
 <br></br>
 
-▪️ 모니터링 툴
+#### ▪️ 모니터링 툴
   - `prometheus` :9090 포트로 접속
   - `grafana`  : 3000 포트로 접속
   - `docker-compose`
+
+#
+#### ▪️ 테스트용 endPoint
+  : `localhost:8080/api/member` (gateway) -> (resoure-service) 
 
 #
 #### 💡 실행 주의사항 💡
